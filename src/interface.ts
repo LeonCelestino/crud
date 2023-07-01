@@ -1,7 +1,7 @@
 interface ItemInterface {
     task: string,
     priority: string,
-    date: Date
+    date: string
 }
 
 interface TableItem {

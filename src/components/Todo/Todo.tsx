@@ -11,18 +11,21 @@ const Todo = (props: Props) => {
   const [item, setItem] = useState<ItemInterface>({
     task: '',
     priority: "",
-    date: new Date()
+    date: ""
   });
 
   const [tableData, setTableData] = useState<TableItem[]>([])
 
   const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
-    
+    const stringToDate = new Date(item.date)
+    const formattedDate = new Intl.DateTimeFormat("en-GB").format(stringToDate)
+  
+    console.log(formattedDate)
     setTableData([...tableData, {
       taskItem: item.task,
       taskPriority: item.priority,
-      date: new Intl.DateTimeFormat("en-GB").format(item.date)
+      date: formattedDate
     }])
 
     console.log(tableData)
